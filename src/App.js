@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import Admin from './components/admin/Admin'
+import SignIn from './components/authorization/SignIn'
+import SignUp from './components/authorization/SignUp'
+import Main from './components/Main'
 
 function App() {
+  const token = useSelector((state) => state.authorizationSlice.token)
+
+  if (!token) {
+    return (
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/auth" element={<SignUp />} />
+        <Route path="/login" element={<SignIn />} />
+      </Routes>
+    )
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/products" element={<Admin />} />
+      <Route path="/login" element={<Navigate to="/" />} />
+      <Route path="/auth" element={<Navigate to="/" />} />
+    </Routes>
+  )
 }
 
-export default App;
+export default App
