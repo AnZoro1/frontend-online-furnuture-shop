@@ -1,7 +1,12 @@
 import React from 'react'
 
-const Product = () => {
-  return <div>Hello World</div>
+const Product = (props) => {
+  return (
+    <>
+      <div>{props.imageSrc}</div>
+      <img src={props.imageSrc} alt="product" />
+    </>
+  )
 }
 
 export default Product

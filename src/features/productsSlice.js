@@ -10,14 +10,13 @@ export const fetchPostProducts = createAsyncThunk(
   'postProducts/fetch',
   async ({ name, image, price }, thunkAPI) => {
     const formData = new FormData()
-    formData.append('name', JSON.stringify(name))
-    formData.append('img', image)
-    formData.append('price', JSON.stringify(price))
-    console.log(formData)
+    formData.append('name', name) // key and value должны точно совпадать
+    formData.append('image', image)
+    formData.append('price', price)
+
     try {
       const res = await fetch('http://localhost:4000/products', {
         method: 'POST',
-
         body: formData,
       })
 
@@ -38,11 +37,12 @@ export const fetchGetProducts = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await fetch('http://localhost:4000/products')
-      const products = res.json()
+      const products = await res.json()
 
       if (products.error) {
         return thunkAPI.rejectWithValue(products.error)
       }
+      console.log(products)
       return products
     } catch (error) {
       return thunkAPI.rejectWithValue(error)

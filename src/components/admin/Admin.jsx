@@ -4,7 +4,7 @@ import { fetchPostProducts } from '../../features/productsSlice'
 
 const Admin = () => {
   const [name, setName] = useState('')
-  const [image, setImage] = useState('')
+  const [image, setImage] = useState(null)
   const [price, setPrice] = useState('')
   const dispatch = useDispatch()
   const error = useSelector((state) => state.productsSlice.error)
