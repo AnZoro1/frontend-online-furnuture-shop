@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchGetProducts } from '../../features/productsSlice'
 import Product from './Product'
+import styles from './Products.module.scss'
+
 const Products = () => {
   const dispatch = useDispatch()
 
@@ -12,9 +14,15 @@ const Products = () => {
   const productsState = useSelector((state) => state.productsSlice.products)
 
   return (
-    <div>
+    <div className={styles.main}>
       {productsState.map((item) => {
-        return <Product imageSrc={`http://localhost:4000/` + item.imageSrc} />
+        return (
+          <Product
+            name={item.name}
+            imageSrc={`http://localhost:4000/` + item.imageSrc}
+            price={item.price}
+          />
+        )
       })}
     </div>
   )
