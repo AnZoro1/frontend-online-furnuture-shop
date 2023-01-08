@@ -14,17 +14,20 @@ const Products = () => {
   const productsState = useSelector((state) => state.productsSlice.products)
 
   return (
-    <div className={styles.main}>
-      {productsState.map((item) => {
-        return (
-          <Product
-            name={item.name}
-            imageSrc={`http://localhost:4000/` + item.imageSrc}
-            price={item.price}
-          />
-        )
-      })}
-    </div>
+    <>
+      <div className={styles.main}>
+        {productsState.map((item) => {
+          return (
+            <Product
+              name={item.name}
+              imageSrc={`http://localhost:4000/` + item.imageSrc}
+              price={item.price}
+            />
+          )
+        })}
+      </div>
+      <hr className={styles.hr2}/>
+    </>
   )
 }
 

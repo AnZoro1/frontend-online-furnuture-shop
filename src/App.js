@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import Admin from './components/admin/Admin'
 import SignIn from './components/authorization/SignIn'
 import SignUp from './components/authorization/SignUp'
-import Main from './components/Main'
+import Main from './components/HeaderMainFooter/Main'
 
 function App() {
   const token = useSelector((state) => state.authorizationSlice.token)
