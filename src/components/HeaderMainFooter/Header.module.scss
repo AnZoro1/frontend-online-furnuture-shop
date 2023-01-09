@@ -4,7 +4,17 @@
   text-align: center;
 
   display: flex;
-  padding-left: 150px;
+  padding-left: 145px;
+
+  .buttonBasketClose {
+    width: 230px;
+    height: 50px;
+    margin-left: 0px;
+    border: none;
+    background-color: greenyellow;
+    color: rgb(202, 114, 114);
+
+  }
 
   .image {
     width: 70px;
@@ -12,26 +22,65 @@
     background-color: brown;
     padding: 0%;
   }
-  div {
-    margin-left: 80px;
-    margin-top: 10px;
-    &:hover {
-      transform: translateY(10px);
-    }
+  .divForBasketAndButtonClose {
   }
+
   .basketButton {
     border: none;
     background-color: orange;
     border-radius: 15px;
-    
+    margin-left: 80px;
   }
   .basket {
     margin-top: 0px;
     width: 40px;
     height: 40px;
   }
-}
 
+  .one {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+
+  .two {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+  .three {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+  .four {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+  .five {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+  .six {
+    margin-left: 80px;
+    margin-top: 10px;
+    &:hover {
+      transform: translateY(10px);
+    }
+  }
+}
 .hr {
   width: 1150px;
   opacity: 0.43;
