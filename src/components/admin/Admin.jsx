@@ -9,6 +9,7 @@ const Admin = () => {
   const dispatch = useDispatch()
   const error = useSelector((state) => state.productsSlice.error)
 
+
   const handleName = (e) => {
     setName(e.target.value)
   }

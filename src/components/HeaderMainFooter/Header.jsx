@@ -32,7 +32,12 @@ const Header = () => {
             <div className={styles.divForBasketAndButtonClose}>
               <Basket />{' '}
               <div className={styles.buttonBasketClose}>
-                <button onClick={handleBasket2}>закрыть корзину</button>
+                <button
+                  className={styles.buttonBasketClose2}
+                  onClick={handleBasket2}
+                >
+                  закрыть корзину
+                </button>
               </div>
             </div>
           </>

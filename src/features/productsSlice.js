@@ -9,6 +9,9 @@ const initialState = {
 export const fetchPostProducts = createAsyncThunk(
   'postProducts/fetch',
   async ({ name, image, price }, thunkAPI) => {
+    console.log(image)
+    console.log(price)
+    console.log(name)
     const formData = new FormData()
     formData.append('name', name) // key and value должны точно совпадать
     formData.append('image', image)
