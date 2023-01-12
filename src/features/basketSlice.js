@@ -53,8 +53,9 @@ export const getFromBasket = createAsyncThunk(
 export const deleteFromBasket = createAsyncThunk(
   'deleteFromBasket/fetch',
   async (data, thunkAPI) => {
+    console.log(data)
     try {
-      const res = await fetch(`http://localhost:4000/baskets/${data.id}`, {
+      const res = await fetch(`http://localhost:4000/baskets/${data}`, {
         method: 'DELETE',
       })
       const products = await res.json()
@@ -85,6 +86,7 @@ const basketSlice = createSlice({
       .addCase(postInBasket.fulfilled, (state, action) => {
         state.pending = false
         state.error = false
+        state.productInBasket.push(action.payload)
       })
       .addCase(postInBasket.rejected, (state, action) => {
         state.pending = false

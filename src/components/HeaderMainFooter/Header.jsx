@@ -9,7 +9,6 @@ const Header = () => {
   }
   const handleBasket2 = () => {
     setBasket(false)
-    console.log(basket)
   }
   return (
     <>

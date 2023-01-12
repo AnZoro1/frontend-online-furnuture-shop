@@ -9,7 +9,10 @@
   .buttonBasketClose {
     width: 230px;
     height: 50px;
-    margin-left: 0px;
+
+    border: 2px solid red;
+    margin-top: 600px;
+    margin-left: -200px;
 
     .buttonBasketClose2 {
       border: none;
@@ -17,6 +20,8 @@
       width: 160px;
       height: 40px;
       border-radius: 50px;
+      position: absolute;
+      margin-left: -80px;
     }
   }
 
