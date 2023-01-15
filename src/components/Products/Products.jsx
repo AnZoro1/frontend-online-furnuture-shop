@@ -27,7 +27,7 @@ const Products = () => {
           )
         })}
       </div>
-      <hr className={styles.hr2}/>
+      <hr className={styles.hr2} />
     </>
   )
 }
