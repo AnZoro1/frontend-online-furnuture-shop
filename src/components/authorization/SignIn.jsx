@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { authSignIn } from '../../features/authorizationSlices/authorizationSlice'
+import styles from './SignIn.module.scss'
 
 const SignIn = () => {
   const [login, setLogin] = useState('')
@@ -26,23 +27,48 @@ const SignIn = () => {
   }
 
   return (
-    <form action="" onSubmit={handleSignIn}>
-      <input
-        type="text"
-        value={login}
-        placeholder="login"
-        onChange={handleLogin}
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        placeholder="password"
-        onChange={handlePassword}
-      />
-      <br />
-      <button type="submit">auth</button>
-    </form>
+    <div className={styles.main}>
+      <header>
+        <div className={styles.containerCircle}>
+          <div className={styles.circle}></div>
+        </div>
+      </header>
+      <main>
+        <div className={styles.profileDiv}>
+          <img className={styles.imageProfile} src="mebelProfile.jpg" alt="" />
+        </div>
+        <div className={styles.textAndButton}>
+          {' '}
+          <div className={styles.text}>
+            Магазин открыт только для зарегистрированных пользователей. Если вы
+            зарегистрированы, введите в форме логин и пароль. Если вы все еще не
+            зарегистрированы, вы можете сделать это здесь...
+          </div>{' '}
+          <div className={styles.buttonDiv}><button className={styles.button}>зарегистрироваться</button></div>
+          
+        </div>
+        <div className={styles.formDiv}>
+          <form action="" onSubmit={handleSignIn}>
+            <input
+              type="text"
+              value={login}
+              placeholder="login"
+              onChange={handleLogin}
+            />
+            <br />
+            <input
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={handlePassword}
+            />
+            <br />
+            <button type="submit">auth</button>
+          </form>
+        </div>
+      </main>
+      <footer></footer>
+    </div>
   )
 }
 
