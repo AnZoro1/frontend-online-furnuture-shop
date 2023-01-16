@@ -24,8 +24,6 @@ const SignIn = () => {
     dispatch(authSignIn({ login, password }))
   }
 
- 
-
   if (error) {
     return <div>{error}</div>
   }
@@ -46,15 +44,18 @@ const SignIn = () => {
           <div className={styles.text}>
             Магазин открыт только для зарегистрированных пользователей. Если вы
             зарегистрированы, введите в форме логин и пароль. Если вы все еще не
-            зарегистрированы, вы можете сделать это здесь ==>
+            зарегистрированы, вы можете сделать это здесь...
           </div>{' '}
           <div className={styles.buttonDiv}>
-          <Link className={styles.link} to="/auth">Зарегистрироваться</Link>
+            <Link className={styles.link} to="/auth">
+              Зарегистрироваться
+            </Link>
           </div>
         </div>
         <div className={styles.formDiv}>
           <form action="" onSubmit={handleSignIn}>
             <input
+              className={styles.input1}
               type="text"
               value={login}
               placeholder="login"
@@ -62,17 +63,19 @@ const SignIn = () => {
             />
             <br />
             <input
+              className={styles.input1}
               type="password"
               value={password}
               placeholder="password"
               onChange={handlePassword}
             />
             <br />
-            <button type="submit">auth</button>
+            <button className={styles.buttonAuth} type="submit">
+              auth
+            </button>
           </form>
         </div>
       </main>
-      <footer></footer>
     </div>
   )
 }
