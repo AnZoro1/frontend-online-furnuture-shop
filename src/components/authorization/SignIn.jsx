@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link, Route, Routes } from 'react-router-dom'
 import { authSignIn } from '../../features/authorizationSlices/authorizationSlice'
 import styles from './SignIn.module.scss'
+import SignUp from './SignUp'
 
 const SignIn = () => {
   const [login, setLogin] = useState('')
@@ -21,6 +23,8 @@ const SignIn = () => {
     e.preventDefault()
     dispatch(authSignIn({ login, password }))
   }
+
+ 
 
   if (error) {
     return <div>{error}</div>
@@ -42,10 +46,11 @@ const SignIn = () => {
           <div className={styles.text}>
             Магазин открыт только для зарегистрированных пользователей. Если вы
             зарегистрированы, введите в форме логин и пароль. Если вы все еще не
-            зарегистрированы, вы можете сделать это здесь...
+            зарегистрированы, вы можете сделать это здесь ==>
           </div>{' '}
-          <div className={styles.buttonDiv}><button className={styles.button}>зарегистрироваться</button></div>
-          
+          <div className={styles.buttonDiv}>
+          <Link className={styles.link} to="/auth">Зарегистрироваться</Link>
+          </div>
         </div>
         <div className={styles.formDiv}>
           <form action="" onSubmit={handleSignIn}>
