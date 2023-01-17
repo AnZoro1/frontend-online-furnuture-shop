@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, Route, Routes } from 'react-router-dom'
 import { authSignIn } from '../../features/authorizationSlices/authorizationSlice'
 import styles from './SignIn.module.scss'
-import SignUp from './SignUp'
 
 const SignIn = () => {
   const [login, setLogin] = useState('')

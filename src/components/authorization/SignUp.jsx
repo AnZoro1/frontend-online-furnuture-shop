@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { authSignUp } from '../../features/authorizationSlices/authorizationSlice'
+import styles from './SignUp.module.scss'
 
 const SignUp = () => {
   const [login, setLogin] = useState('')
@@ -31,25 +33,48 @@ const SignUp = () => {
   }
 
   return (
-    <form action="" onSubmit={handleSignUp}>
-      <input
-        type="text"
-        value={login}
-        placeholder="login..."
-        onChange={handleSetLogin}
-      />
-      <br />
-      <input
-        type="password"
-        value={password}
-        placeholder="password..."
-        onChange={handleSetPassword}
-      />
-      <br />
-      <input type="text" value={email} placeholder='email...' onChange={handleSetEmail}/>
-      <br />
-      <button type="submit">registr</button>
-    </form>
+    <div className={styles.main}>
+      <header>
+        <div className={styles.text}>
+          Если вы желаете зарегистрироваться, введите внизу в форме свой новый
+          логин, пароль, а также e-mail.
+        </div>
+      </header>
+      <main>
+        {' '}
+        <form className={styles.form} action="" onSubmit={handleSignUp}>
+          <input
+            type="text"
+            value={login}
+            placeholder="login..."
+            onChange={handleSetLogin}
+          />
+          <br />
+          <input
+            type="password"
+            value={password}
+            placeholder="password..."
+            onChange={handleSetPassword}
+          />
+          <br />
+          <input
+            type="text"
+            value={email}
+            placeholder="email..."
+            onChange={handleSetEmail}
+          />
+          <br />
+          <button type="submit">registr</button>
+        </form>
+        <div>
+          После регистрации, перейдите
+          <Link className={styles.link} to="/login">
+            сюда
+          </Link>{' '}
+          для авторизации.
+        </div>
+      </main>
+    </div>
   )
 }
 
