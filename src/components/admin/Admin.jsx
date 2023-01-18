@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPostProducts } from '../../features/productsSlice'
+import styles from './Admin.module.scss'
 
 const Admin = () => {
   const [name, setName] = useState('')
@@ -8,7 +9,6 @@ const Admin = () => {
   const [price, setPrice] = useState('')
   const dispatch = useDispatch()
   const error = useSelector((state) => state.productsSlice.error)
-
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -31,25 +31,33 @@ const Admin = () => {
   }
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="name..."
-        value={name}
-        onChange={handleName}
-      />
-      <br />
-      <input type="file" name="file" onChange={handleImage} />
-      <br />
-      <input
-        type="text"
-        placeholder="price..."
-        value={price}
-        onChange={handlePrice}
-      />
-      <br />
-      <button>Отправить</button>
-    </form>
+    <div className={styles.main}>
+      <div className={styles.text}>
+        Добро пожаловать админ! <br /> Для добавления новой продукции в
+        приложение, введите имя, выберите файл и укажите цену. <br /> Продукция
+        автоматически отправится на бэкенд, оттуда вернется и отрендерится в
+        приложении!
+      </div>{' '}
+      <form className={styles.form} action="" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="name..."
+          value={name}
+          onChange={handleName}
+        />
+        <br />
+        <input type="file" name="file" onChange={handleImage} />
+        <br />
+        <input
+          type="text"
+          placeholder="price..."
+          value={price}
+          onChange={handlePrice}
+        />
+        <br />
+        <button>Отправить</button>
+      </form>
+    </div>
   )
 }
 
