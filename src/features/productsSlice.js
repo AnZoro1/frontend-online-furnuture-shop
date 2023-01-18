@@ -42,8 +42,31 @@ export const fetchGetProducts = createAsyncThunk(
       if (products.error) {
         return thunkAPI.rejectWithValue(products.error)
       }
-      
+
       return products
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error)
+    }
+  }
+)
+
+export const deleteFetchProducts = createAsyncThunk(
+  'deleteProduct7fetch',
+  async (data, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:4000/products/${data}`, {
+        method: 'DELETE',
+      })
+      const products = await res.json()
+
+      if (res.ok) {
+        console.log('product remove successfully')
+      }
+
+      if (products.error) {
+        return thunkAPI.rejectWithValue(products.error)
+      }
+      return thunkAPI.fulfillWithValue(products)
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
     }
@@ -63,6 +86,7 @@ const productsSlice = createSlice({
       .addCase(fetchPostProducts.fulfilled, (state, action) => {
         state.pending = false
         state.error = false
+        state.products.push(action.payload)
       })
       .addCase(fetchPostProducts.rejected, (state, action) => {
         state.pending = false
@@ -79,6 +103,24 @@ const productsSlice = createSlice({
       })
       .addCase(fetchGetProducts.rejected, (state, action) => {
         state.pending = false
+        state.error = action.payload
+      })
+      .addCase(deleteFetchProducts.pending, (state, action) => {
+        state.pending = true
+        state.error = false
+      })
+      .addCase(deleteFetchProducts.fulfilled, (state, action) => {
+        state.pending = false
+        state.error = false
+        state.products = state.products.filter((item) => {
+          if (item._id !== action.payload._id) {
+            return true
+          }
+        })
+      })
+      .addCase(deleteFetchProducts.rejected, (state, action) => {
+        state.pending = false
+        state.error = false
         state.error = action.payload
       })
   },

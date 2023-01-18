@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPostProducts } from '../../features/productsSlice'
+import {
+  deleteFetchProducts,
+  fetchGetProducts,
+  fetchPostProducts,
+} from '../../features/productsSlice'
 import styles from './Admin.module.scss'
+import AdminContent from './AdminContent'
 
 const Admin = () => {
   const [name, setName] = useState('')
@@ -9,6 +14,11 @@ const Admin = () => {
   const [price, setPrice] = useState('')
   const dispatch = useDispatch()
   const error = useSelector((state) => state.productsSlice.error)
+  const products = useSelector((state) => state.productsSlice.products)
+
+  useEffect(() => {
+    dispatch(fetchGetProducts())
+  }, [])
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -25,6 +35,8 @@ const Admin = () => {
     e.preventDefault()
     dispatch(fetchPostProducts({ name, image, price }))
   }
+
+  
 
   if (error) {
     return <div>{error}</div>
@@ -57,6 +69,18 @@ const Admin = () => {
         <br />
         <button>Отправить</button>
       </form>
+      <div className={styles.content}>
+        {products.map((item) => {
+          return (
+            <AdminContent
+              name={item.name}
+              price={item.price}
+              image={item.imageSrc}
+              id={item._id}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

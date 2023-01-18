@@ -17,7 +17,7 @@ const Basket = () => {
   const productInBasket = useSelector(
     (state) => state.basketSlice.productInBasket
   )
-  console.log(productInBasket)
+ 
 
   if (productInBasket.length < 1) {
     return <div>Добавьте товар в корзину</div>
