@@ -83,7 +83,6 @@ const authorizationSlice = createSlice({
       })
       .addCase(authSignIn.rejected, (state, action) => {
         state.error = action.payload
-        state.token = action.payload
         state.signingIn = false
       })
   },

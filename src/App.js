@@ -7,6 +7,7 @@ import Main from './components/HeaderMainFooter/Main'
 
 function App() {
   const token = useSelector((state) => state.authorizationSlice.token)
+  console.log(token)
 
   if (!token) {
     return (

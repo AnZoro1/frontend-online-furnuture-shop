@@ -36,8 +36,8 @@ const SignUp = () => {
     <div className={styles.main}>
       <header>
         <div className={styles.text}>
-          Если вы желаете зарегистрироваться, введите внизу в форме свой новый
-          логин, пароль, а также e-mail.
+          Если вы желаете зарегистрироваться, создайте пароль, логин и введите
+          e-mail.
         </div>
       </header>
       <main>
@@ -66,8 +66,8 @@ const SignUp = () => {
           <br />
           <button type="submit">registr</button>
         </form>
-        <div>
-          После регистрации, перейдите
+        <div className={styles.openAnotherPageForReg}>
+          После регистрации, перейдите{' '}
           <Link className={styles.link} to="/login">
             сюда
           </Link>{' '}
