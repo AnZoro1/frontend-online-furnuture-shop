@@ -12,7 +12,6 @@ const Products = () => {
   }, [])
 
   const productsState = useSelector((state) => state.productsSlice.products)
-  console.log(productsState)
 
   return (
     <>
