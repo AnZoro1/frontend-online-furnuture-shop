@@ -5,20 +5,26 @@ import {
   fetchGetProducts,
   fetchPostProducts,
 } from '../../features/productsSlice'
+import { getUsersFetch } from '../../features/usersSlice'
 import styles from './Admin.module.scss'
 import AdminContent from './AdminContent'
+import Users from './Users'
 
 const Admin = () => {
   const [name, setName] = useState('')
   const [image, setImage] = useState(null)
   const [price, setPrice] = useState('')
   const dispatch = useDispatch()
-  const error = useSelector((state) => state.productsSlice.error)
-  const products = useSelector((state) => state.productsSlice.products)
 
   useEffect(() => {
     dispatch(fetchGetProducts())
+    dispatch(getUsersFetch())
   }, [])
+
+  const error = useSelector((state) => state.productsSlice.error)
+  const products = useSelector((state) => state.productsSlice.products)
+  const error2 = useSelector((state) => state.usersSlice.error)
+  const users = useSelector((state) => state.usersSlice.users)
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -36,10 +42,11 @@ const Admin = () => {
     dispatch(fetchPostProducts({ name, image, price }))
   }
 
-  
-
   if (error) {
     return <div>{error}</div>
+  }
+  if (error2) {
+    return <div>{error2}</div>
   }
 
   return (
@@ -79,6 +86,12 @@ const Admin = () => {
               id={item._id}
             />
           )
+        })}
+      </div>
+      <div className={styles.users}>
+        {users.map((item) => {
+          console.log(item)
+          return <Users users={item.login} />
         })}
       </div>
     </div>

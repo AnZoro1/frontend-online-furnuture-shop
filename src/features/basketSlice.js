@@ -16,7 +16,12 @@ export const postInBasket = createAsyncThunk(
     try {
       const res = await fetch('http://localhost:4000/baskets', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: `Bearer ${
+            thunkAPI.getState().authorizationSlice.token
+          }`,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ image, price, name }),
       })
 
@@ -37,7 +42,13 @@ export const getFromBasket = createAsyncThunk(
   'getFromBasket/fetch',
   async (data, thunkAPI) => {
     try {
-      const res = await fetch('http://localhost:4000/baskets')
+      const res = await fetch('http://localhost:4000/baskets', {
+        headers: {
+          Authorization: `Bearer ${
+            thunkAPI.getState().authorizationSlice.token
+          }`,
+        },
+      })
       const products = await res.json()
 
       if (products.error) {
@@ -57,6 +68,11 @@ export const deleteFromBasket = createAsyncThunk(
     try {
       const res = await fetch(`http://localhost:4000/baskets/${data}`, {
         method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${
+            thunkAPI.getState().authorizationSlice.token
+          }`,
+        },
       })
       const products = await res.json()
 

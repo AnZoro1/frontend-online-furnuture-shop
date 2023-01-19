@@ -5,6 +5,7 @@ const initialState = {
   error: null,
   signingUp: false,
   signingIn: false,
+  users: [],
 }
 
 export const authSignUp = createAsyncThunk(
