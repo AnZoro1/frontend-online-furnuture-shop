@@ -17,10 +17,9 @@ const Basket = () => {
   const productInBasket = useSelector(
     (state) => state.basketSlice.productInBasket
   )
- 
 
   if (productInBasket.length < 1) {
-    return <div>Добавьте товар в корзину</div>
+    return <div className={styles.EmptyBasket}>Добавьте товар в корзину</div>
   }
   return (
     <div className={styles.basket}>

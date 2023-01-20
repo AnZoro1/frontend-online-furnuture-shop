@@ -24,6 +24,7 @@ const Products = () => {
               imageSrc={`http://localhost:4000/` + item.imageSrc}
               price={item.price}
               image={item.imageSrc}
+              id={item._id}
             />
           )
         })}
