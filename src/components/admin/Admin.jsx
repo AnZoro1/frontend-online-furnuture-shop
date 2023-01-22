@@ -14,6 +14,7 @@ const Admin = () => {
   const [name, setName] = useState('')
   const [image, setImage] = useState(null)
   const [price, setPrice] = useState('')
+  const [countProd, setCountProd] = useState('')
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,9 +38,13 @@ const Admin = () => {
     setImage(e.target.files[0])
   }
 
+  const handleCountProd = (e) => {
+    setCountProd(e.target.value)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(fetchPostProducts({ name, image, price }))
+    dispatch(fetchPostProducts({ name, image, price, countProd }))
   }
 
   if (error) {
@@ -76,6 +81,13 @@ const Admin = () => {
           onChange={handlePrice}
         />
         <br />
+        <input
+          type="text"
+          placeholder="countProd..."
+          value={countProd}
+          onChange={handleCountProd}
+        />
+        <br />
         <button>Отправить</button>
       </form>
       <div className={styles.content}>
@@ -85,6 +97,7 @@ const Admin = () => {
               name={item.name}
               price={item.price}
               image={item.imageSrc}
+              countProd={item.countProd}
               id={item._id}
             />
           )
