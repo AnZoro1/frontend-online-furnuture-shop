@@ -17,6 +17,7 @@ const Basket = () => {
   const productInBasket = useSelector(
     (state) => state.basketSlice.productInBasket
   )
+  console.log(productInBasket)
 
   if (productInBasket.length < 1) {
     return <div className={styles.EmptyBasket}>Добавьте товар в корзину</div>
@@ -38,11 +39,11 @@ const Basket = () => {
                 </button>
               </div>
             </div>
-
             <div>
               <img src={`http://localhost:4000/` + item.imageSrc} alt="" />
             </div>
-            <div className={styles.price}>{item.price}</div>
+            <div className={styles.price}>{item.price}$</div>
+            <div className={styles.countProd}>{item.countProd}</div>
             <hr />
           </div>
         )

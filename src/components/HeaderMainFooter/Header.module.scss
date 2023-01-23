@@ -39,11 +39,31 @@
     background-color: orange;
     border-radius: 15px;
     margin-left: 80px;
-  }
-  .basket {
-    margin-top: 0px;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+
+    .amountProdBask {
+      color: white;
+
+      position: absolute;
+      margin-left: -20px;
+      margin-top: 5px;
+      font-size: 13px;
+    }
+
+    .basket {
+      margin-top: 18px;
+      width: 30px;
+      height: 30px;
+      position: relative;
+    }
+
+    .basket2 {
+      margin-top: 10px;
+      width: 30px;
+      height: 30px;
+      position: relative;
+    }
   }
 
   .one {

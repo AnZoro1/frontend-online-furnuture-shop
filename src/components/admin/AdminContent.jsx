@@ -21,6 +21,7 @@ const AdminContent = (props) => {
         />
       </div>
       <div>{props.price}</div>
+     
       <button onClick={() => handleDeleteProduct(props.id)}>x</button>
     </div>
   )

@@ -8,12 +8,12 @@ const initialState = {
 
 export const fetchPostProducts = createAsyncThunk(
   'postProducts/fetch',
-  async ({ name, image, price /*, countProd */ }, thunkAPI) => {
+  async ({ name, image, price, countProd }, thunkAPI) => {
     const formData = new FormData()
     formData.append('name', name) // key and value должны точно совпадать
     formData.append('image', image)
     formData.append('price', price)
-    //  formData.append('countProd', countProd)
+    formData.append('countProd', countProd)
 
     try {
       const res = await fetch('http://localhost:4000/products', {

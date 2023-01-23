@@ -25,6 +25,7 @@ const Products = () => {
               price={item.price}
               image={item.imageSrc}
               id={item._id}
+              countProd={item.countProd}
             />
           )
         })}

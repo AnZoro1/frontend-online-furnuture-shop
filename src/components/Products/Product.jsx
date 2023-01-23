@@ -7,34 +7,34 @@ const Product = (props) => {
   const dispatch = useDispatch()
   const [state, setState] = useState([])
 
-  const handleBuy = (name, image, price) => {
-    setState({ name, image, price })
-    dispatch(postInBasket({ name, image, price }))
+  const handleBuy = (name, image, price, countProd) => {
+    setState({ name, image, price, countProd })
+    dispatch(postInBasket({ name, image, price, countProd }))
   }
 
   const productsInBasket = useSelector(
     (state) => state.basketSlice.productInBasket
   )
 
-  //console.log(productsInBasket)
+  console.log(productsInBasket)
 
   const haveOrNotProdInBask = productsInBasket.find(
     (item) => item.name === props.name
   )
-  console.log(haveOrNotProdInBask)
 
   return (
     <div className={styles.main}>
       <div className={styles.content}>
         <div className={styles.name}>{props.name}</div>
         <img className={styles.images} src={props.imageSrc} alt="product" />
-        <div className={styles.price}>{props.price}</div>
+        <div className={styles.price}>Цена:{props.price}$</div>
+        <div>{props.countProd}</div>
 
         <button
           className={styles.buy}
           disabled={haveOrNotProdInBask}
           onClick={() => {
-            handleBuy(props.name, props.image, props.price)
+            handleBuy(props.name, props.image, props.price, props.countProd)
           }}
         >
           Купить
