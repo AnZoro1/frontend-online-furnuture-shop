@@ -20,8 +20,9 @@ const AdminContent = (props) => {
           alt=""
         />
       </div>
-      <div>{props.price}</div>
-     
+      <div>{props.price}$</div>
+      <div>Количество на складе: {props.countProd}</div>
+
       <button onClick={() => handleDeleteProduct(props.id)}>x</button>
     </div>
   )

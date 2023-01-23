@@ -17,6 +17,11 @@ const Basket = () => {
   const productInBasket = useSelector(
     (state) => state.basketSlice.productInBasket
   )
+
+  const handleMinus = () => {}
+
+  const handlePlus = () => {}
+
   console.log(productInBasket)
 
   if (productInBasket.length < 1) {
@@ -43,7 +48,20 @@ const Basket = () => {
               <img src={`http://localhost:4000/` + item.imageSrc} alt="" />
             </div>
             <div className={styles.price}>{item.price}$</div>
-            <div className={styles.countProd}>{item.countProd}</div>
+            <div className={styles.countProd}>
+              На складе: {item.countProd} шт.
+            </div>
+            <div>
+              {' '}
+              <button className={styles.countButton} onClick={handleMinus}>
+                -
+              </button>{' '}
+              {item.buy}{' '}
+              <button className={styles.countButton} onClick={handlePlus}>
+                +
+              </button>
+            </div>
+
             <hr />
           </div>
         )
