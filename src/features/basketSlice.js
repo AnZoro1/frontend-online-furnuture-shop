@@ -8,7 +8,7 @@ const initialState = {
 
 export const postInBasket = createAsyncThunk(
   'postInBasket/fetch',
-  async ({ name, image, price }, thunkAPI) => {
+  async ({ name, image, price, countProd }, thunkAPI) => {
     //console.log(image)
     //console.log(price)
     // console.log(name)
@@ -22,7 +22,7 @@ export const postInBasket = createAsyncThunk(
           }`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ image, price, name }),
+        body: JSON.stringify({ image, price, name, countProd }),
       })
 
       const json = await res.json()
