@@ -18,9 +18,7 @@ const Basket = () => {
     (state) => state.basketSlice.productInBasket
   )
 
-  const handleMinus = () => {}
 
-  const handlePlus = () => {}
 
   console.log(productInBasket)
 
@@ -51,17 +49,6 @@ const Basket = () => {
             <div className={styles.countProd}>
               На складе: {item.countProd} шт.
             </div>
-            <div>
-              {' '}
-              <button className={styles.countButton} onClick={handleMinus}>
-                -
-              </button>{' '}
-              {item.buy}{' '}
-              <button className={styles.countButton} onClick={handlePlus}>
-                +
-              </button>
-            </div>
-
             <hr />
           </div>
         )

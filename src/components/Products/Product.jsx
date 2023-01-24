@@ -7,9 +7,9 @@ const Product = (props) => {
   const dispatch = useDispatch()
   const [state, setState] = useState([])
 
-  const handleBuy = (name, image, price, countProd, buy) => {
-    setState({ name, image, price, countProd, buy })
-    dispatch(postInBasket({ name, image, price, countProd, buy }))
+  const handleBuy = (name, image, price, countProd) => {
+    setState({ name, image, price, countProd})
+    dispatch(postInBasket({ name, image, price, countProd}))
   }
 
   const productsInBasket = useSelector(
@@ -33,7 +33,7 @@ const Product = (props) => {
           className={styles.buy}
           disabled={haveOrNotProdInBask}
           onClick={() => {
-            handleBuy(props.name, props.image, props.price, props.countProd, props.buy)
+            handleBuy(props.name, props.image, props.price, props.countProd)
           }}
         >
           Купить

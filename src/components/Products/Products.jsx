@@ -26,7 +26,7 @@ const Products = () => {
               image={item.imageSrc}
               id={item._id}
               countProd={item.countProd}
-              buy={1}
+             
             />
           )
         })}
